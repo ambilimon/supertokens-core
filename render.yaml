@@ -5,8 +5,23 @@ services:
     dockerfilePath: Dockerfile
     buildCommand: "./gradlew assemble"
     startCommand: "java -Djava.security.egd=file:/dev/urandom -classpath ./core/*:./plugin-interface/* io.supertokens.Main ./"
+    ports:
+      - 3567
     envVars:
       - key: SUPERTOKENS_HOST
         value: 0.0.0.0
       - key: SUPERTOKENS_PORT
         value: 3567
+      - key: POSTGRESQL_CONNECTION_URI
+        value: postgresql://supertokens_user:somePassword@supertokens-db:5432/supertokens
+  - type: pserv
+    name: supertokens-db
+    plan: free
+    image: postgres:13
+    envVars:
+      - key: PGUSER
+        value: supertokens_user
+      - key: PGPASSWORD
+        value: somePassword
+      - key: PGDATABASE
+        value: supertokens
