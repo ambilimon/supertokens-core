@@ -3,8 +3,8 @@ services:
     name: supertokens-core
     env: docker
     dockerfilePath: Dockerfile
-    buildCommand: ""
-    startCommand: ""
+    buildCommand: "./gradlew assemble"
+    startCommand: "java -Djava.security.egd=file:/dev/urandom -classpath ./core/*:./plugin-interface/* io.supertokens.Main ./"
     ports:
       - 3567
     envVars:
