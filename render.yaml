@@ -5,8 +5,6 @@ services:
     dockerfilePath: Dockerfile
     buildCommand: "./gradlew assemble"
     startCommand: "java -Djava.security.egd=file:/dev/urandom -classpath ./core/*:./plugin-interface/* io.supertokens.Main ./"
-    ports:
-      - 3567
     envVars:
       - key: SUPERTOKENS_HOST
         value: 0.0.0.0
