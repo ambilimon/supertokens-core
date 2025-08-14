@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: supertokens-core
+    env: docker
+    dockerfilePath: Dockerfile
+    buildCommand: ""
+    startCommand: ""
+    ports:
+      - 3567
+    envVars:
+      - key: SUPERTOKENS_HOST
+        value: 0.0.0.0
+      - key: SUPERTOKENS_PORT
+        value: 3567
